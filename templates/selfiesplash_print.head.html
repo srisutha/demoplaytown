@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friendship Tree</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <style>
+    
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background:url(/admin/selfiedownload.png);
+            /*background-repeat:no-repeat;*/
+        }
+
+        .tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px 20px;
+            justify-items: center;
+            align-items: center;
+            /*background:url(/admin/selfiedownload.png);*/
+            /*background-repeat:no-repeat;*/
+        }
+
+        .photo-frame {
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            position: relative;
+            background: url('https://www.playtown.co.in/app_playtown/selfie_splash/assets/img/splash1.png'); /* Replace with your background image URL */
+            background-size: cover;
+        }
+
+        .photo-frame img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover;
+            background-size: cover;
+            margin: 25px 0 0;
+        }
+
+        .photo-frame h4 {
+            margin: 3px 0 0;
+            font-size: 16px;
+            font-family: 'Kaushan Script', cursive;
+            color: #fff;
+        }
+
+        .header, .footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 50px;
+            /*background-color: #f0f0f0;*/
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .header {
+            top: 0;
+        }
+
+        .footer {
+            bottom: 0;
+        }
+
+        @media print {
+            .header, .footer {
+                position: fixed;
+            }
+
+            .header {
+                top: 0;
+            }
+
+            .footer {
+                bottom: 0;
+            }
+
+            .tree {
+                page-break-inside: avoid;
+            }
+
+            .no-page-break {
+                page-break-inside: avoid;
+            }
+        }
+        #top-left-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+        #bottom-right-logo {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+        }
+        #top-center {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            padding-bottom: 20px;
+            text-align: center;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .title {
+            font-family: "Kaushan Script", cursive;
+            font-size: 32px;
+            font-weight: 600;
+            color: #FFFF00;
+             text-shadow: 5px 5px black; 
+        }
+        #bottom-center {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%);
+            text-align: center;
+            /*color: black; */
+            z-index: 999999;
+            background: #00000047;
+            padding: 0 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+    <div id="top-left-logo">
+        <img width="150" src="https://app.playtown.co.in/public/uploads/20241123_67414c389a0a3.jpeg" alt="Left Logo" id="top_left_logo" >
+    </div>
+        <div class="title" id="game_title" >Portfolio Annual Fest 2024</div>
+
+</div>
+

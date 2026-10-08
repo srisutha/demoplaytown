@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket with Auto-Reconnect</title>
+    <style>
+        #status {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .connected { color: green; }
+        .connecting { color: orange; }
+        .disconnected { color: red; }
+    </style>
+</head>
+<body>
+    <h1>WebSocket Game Type Fetch</h1>
+
+    <div id="status" class="connecting">Connecting...</div>
+
+    <button id="fetchBtn" onclick="fetchGameTypes()" disabled>Fetch Game Types</button>
+    <pre id="output"></pre>
+
+    <script>
+        let socket;
+        let reconnectInterval = 3000; // 3 seconds
+        let messageQueue = [];
+
+        function setStatus(status, className) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = status;
+            statusEl.className = className;
+        }
+
+        function initWebSocket() {
+            setStatus('Connecting...', 'connecting');
+            socket = new WebSocket('ws://localhost:3001');
+
+            socket.onopen = () => {
+                console.log('WebSocket connected');
+                setStatus('Connected', 'connected');
+                document.getElementById('fetchBtn').disabled = false;
+
+                // Send any queued messages
+                messageQueue.forEach(msg => socket.send(msg));
+                messageQueue = [];
+            };
+
+            socket.onmessage = (event) => {
+                document.getElementById('output').innerText = event.data;
+            }; 
+
+            socket.onclose = () => {
+                console.warn('WebSocket disconnected. Retrying in 3s...');
+                setStatus('Disconnected. Reconnecting...', 'disconnected');
+                document.getElementById('fetchBtn').disabled = true;
+                setTimeout(initWebSocket, reconnectInterval);
+            };
+
+            socket.onerror = (error) => {
+                console.error('WebSocket error:', error);
+            };
+        }
+
+        function fetchGameTypes() {
+            const msg = 'fetchGameTypes';
+            if (socket.readyState === WebSocket.OPEN) {
+                socket.send(msg);
+            } else {
+                console.warn('WebSocket not ready. Queuing message.');
+                messageQueue.push(msg);
+            }
+        }
+
+        // Start WebSocket on page load
+        initWebSocket();
+    </script>
+</body>
+</html>

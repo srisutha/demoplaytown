@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Overlay with Download</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .card-container {
+      position: relative;
+      width: 280px;
+      height: 503px;
+      margin: 50px auto;
+      background-image: url('assets/img/Collabverse.jpg');
+      background-size: cover;
+      background-position: center;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .overlay-image {
+      position: absolute;
+      top: 133px;
+      left: 90px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+
+    .download-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="card" class="card-container">
+    <img id="profileImage" class="overlay-image" alt="Profile" />
+  </div>
+
+  <button class="download-btn" onclick="downloadCard()">Download</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    // Load image from localStorage
+    const imageBase64 = localStorage.getItem('proimage');
+    const profileImg = document.getElementById('profileImage');
+
+    if (imageBase64) {
+      profileImg.src = imageBase64;
+    } else {
+      profileImg.alt = "No image found in localStorage";
+    }
+
+    // Download function
+    function downloadCard() {
+      const button = document.querySelector('.download-btn');
+      button.style.display = 'none'; // hide button before capture
+
+      html2canvas(document.getElementById('card')).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'card.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        button.style.display = 'block'; // show button again after download
+      });
+    }
+  </script>
+
+</body>
+</html>

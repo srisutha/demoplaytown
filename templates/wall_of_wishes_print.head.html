@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wall of Wishes</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Krona+One&display=swap');
+        .title{
+            font-family: "Kaushan Script", cursive;
+                font-size: 32px;
+                font-weight: 600;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+            color: #fff;
+            overflow-x: hidden;
+            background: #7F00FF; 
+            background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  
+            background: linear-gradient(to right, #E100FF, #7F00FF); 
+
+        }
+        
+        .commment-bar{
+            display: flex;
+            width: 100%;
+            gap: 30px;
+        }
+        .user-img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50em;
+            border: 5px solid #fffc00;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        .user-quote-container{
+            position: relative;
+            display: flex;
+            background: #FFEFBA;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            border-radius: 1em;
+            padding: 1em 0;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            max-width: 1200px;
+            gap: 3.5em;
+            color: #111111;
+            margin-top: 50px;
+        }
+        .quote-icon{
+            position: absolute;
+            top: 25px;
+            left: 20px;
+        }
+        .quote-text{
+            width: 500px;
+            margin: 0 100px;
+            line-height: 1.5;
+            font-family: "Caveat", cursive;
+            
+        }
+  
+     
+        #top-left-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
+        }
+         #bottom-left-logo {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        #top-right-logo {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 9;
+        }
+        #bottom-right-logo {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+        }
+        #top-center {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            padding-bottom: 20px;
+            text-align: center;
+            transform: translateX(-50%);
+            background: rgb(2,0,36);
+            background: linear-gradient(180deg, rgba(2,0,36,0.9) 0%, rgba(0,0,0,0) 100%);
+            
+        }
+        #top-center h2{
+            margin: 3px;
+            text-transform: uppercase;
+        }
+        #bottom-center {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%);
+            text-align: center;
+            /*color: black; */
+            z-index: 999999;
+            background: #00000047;
+            padding: 0 40px;
+        }
+         .intro-ani{
+            animation-name: introAni;
+            animation-duration: 6s;
+        }
+
+        #bgVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%; 
+            min-height: 100%;
+            opacity: 0.4;
+        }
+        .qr-code{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background-color: white;
+           /* background-color: #00000070;
+            border-radius: 5px;
+            padding: 5px;*/
+            padding: 5px;
+            border-radius: 1em;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            z-index: 999;
+        }
+        .qr-code h4{
+            color:black;
+        }
+        
+     
+        .right-container {
+            height: 100%;
+            width: 300px;
+            position: absolute;
+            right: 0;
+            /* background-color: rgb(255 255 255 / 54%); */
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: flex-start;
+            /*margin-right: 3px;*/
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding-right: 10px;
+            padding-left: 20px;
+        }
+        ::-webkit-scrollbar {
+            width: 12px; /* Set the width of the scrollbar */
+        }
+        
+        /* Define the scrollbar handle */
+        ::-webkit-scrollbar-thumb {
+            background-color: #888; /* Set the color of the scrollbar handle */
+            border-radius: 6px; /* Set the border radius to make it rounded */
+        }
+        
+        /* Define the scrollbar track piece above and below the handle */
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1; /* Set the color of the scrollbar track */
+        }
+        
+        /* Define the scrollbar corner (not necessary for everyone) */
+        ::-webkit-scrollbar-corner {
+            background-color: #f1f1f1; /* Set the color of the scrollbar corner */
+        }
+        .header,.footer{
+            display: -webkit-box;
+        }
+        table {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        @media print {
+            @page{
+                size:auto;
+                margin: 3rem 3rem 3rem 5rem !important; 
+            }
+            .table{
+                width: -webkit-fill-available;
+            }
+            /* Insert page break after each element with class "page-break" */
+            /*.no-page-break {
+                page-break-inside: avoid;
+            }*/
+            thead
+            {
+                display: table-header-group;
+            }
+            tfoot
+            {
+                display: table-footer-group;
+            }
+            .no-page-break { page-break-inside:avoid; page-break-after:auto;}
+            
+        }
+        
+    </style>
+</head>
+<body id="body_content">
+

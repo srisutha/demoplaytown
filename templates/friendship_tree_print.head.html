@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Friendship Tree</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to left, #ffc6d9, #FCE4EC, #B39DDB);
+        
+    }
+
+    .header {
+        position: relative;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .top-center {
+        position: relative;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .top-center h4 {
+        margin: 5px 0;
+        font-size: 18px;
+        font-family: "Krona One", sans-serif;
+        color: #333;
+    }
+
+    .top-center .title {
+        font-family: "Kaushan Script", cursive;
+        font-size: 32px;
+        font-weight: 600;
+        color: #33691e;
+    }
+
+    .top-center p {
+        margin: 5px 0;
+        color: #333;
+        font-size: 16px;
+    }
+
+    .top-left-logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .top-right-logo {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .bottom-left-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+    .bottom-right-logo {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .friends_list {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .tree {
+        position: relative;
+        width: 800px;
+        height: 600px;
+        background: url('/app_playtown/friendship_tree/assets/img/tree-bg.png') no-repeat center;
+        background-size: contain;
+    }
+
+    .photo-frame {
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        transform: translate(-50%, -50%);
+    }
+
+    .circle-frame {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .frame-image {
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+.bottom-link {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+    .inner-image {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70px; height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    @media print {
+        @page { size: A4 landscape; margin: 5mm; }
+        body { background: linear-gradient(to left, #ffc6d9, #FCE4EC, #B39DDB); }
+    }
+</style>
+</head>
+<body id="body_content">
+

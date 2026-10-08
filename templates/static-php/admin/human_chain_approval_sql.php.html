@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Human Chain</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+</head>
+<body>
+    <table id="userTable" class="display">
+    <thead>
+        <tr>
+            <th>User Info</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Organization</th>
+            <th>Designation</th>
+            <th>Photo</th>
+            <th>Status</th>
+            <th>Created On</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+<script>
+$(document).ready(function() {
+    var table = $('#userTable').DataTable({
+        "ajax": "common-ajax.php?action=list_human_chain_sql",
+        "columns": [
+            { "title": "User Info" },
+            { "title": "Email" },
+            { "title": "Phone" },
+            { "title": "Organization" },
+            { "title": "Designation" },
+            { "title": "Photo" },
+            { "title": "Status" },
+            { "title": "Created On" },
+            { "title": "Action", "orderable": false }
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'excelHtml5',
+                text: 'Export to Excel',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 6, 7] // Exclude index 5 (Photo) and 8 (Action)
+                }
+            },
+            {
+                extend: 'pdfHtml5',
+                text: 'Export to PDF',
+                exportOptions: {
+                    columns: [0, 1, 2, 3, 4, 6, 7] // Exclude index 5 (Photo) and 8 (Action)
+                }
+            }
+        ]
+    });
+
+    $(document).on("click", ".approve, .reject", function() {
+        var id = $(this).data("id");
+        var status = $(this).hasClass("approve") ? 1 : 2;
+
+        $.post("common-ajax.php?action=update_human_chain_sql", { id: id, status: status }, function(response) {
+            if (response == "success") {
+                table.ajax.reload();
+            } else {
+                alert("Error updating status");
+            }
+        });
+    });
+});
+
+</script>
+</body>
+</html>

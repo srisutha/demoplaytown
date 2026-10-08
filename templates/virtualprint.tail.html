@@ -1,0 +1,14 @@
+</div>
+
+    <script>
+        function printer() {
+            var printContents = document.getElementById("body_content").innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+          // window.location = 'virtualprint.php';
+        }
+        printer();
+    </script>
+</body>

@@ -1,0 +1,15 @@
+
+<script>
+  printer();
+  function printer() {
+    const printContents = document.getElementById("body_content").innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
+    window.print();
+    document.body.innerHTML = originalContents;
+    // Optional redirect after print
+    // window.location = 'wall_of_wishes_print.php';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Wish Pod</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /*body {*/
+        /*    font-family: Arial, Helvetica, sans-serif;*/
+        /*    color: #333;*/
+        /*    margin: 0;*/
+        /*    padding: 0;*/
+        /*    background: linear-gradient(to right, #3b5998, #8b9dc3);*/
+        /*}*/
+        
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background: url(/app_playtown/virtual_wish_pod/assets/wall.jpeg);
+        }
+        .testimonial-container {
+           /* padding: 70px 20px;*/
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .grid-container {
+            position:relative;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+           /* margin: 0 auto;*/
+        }
+        
+        .card {
+            position: relative;
+            background: #ffffff;
+            border-radius: 15px;
+            /*padding: 20px;*/
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .card-header {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border: 5px solid #3b5998;
+        }
+        
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 10px;
+            font-size: 14px;
+        }
+        
+        .user-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+            color: #3b5998;
+        }
+        
+        .user-role {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+        
+        .user-message {
+            font-size: 12px;
+            font-style: italic;
+            color: #333;
+        }
+        
+        
+        @media print {
+            body {
+                margin: 30px 0; /* Top and bottom margins to accommodate fixed header/footer */
+            }
+            .header, .footer {
+                position: fixed;
+            }
+
+            .header {
+                top: 0;
+            }
+            .footer {
+                bottom: 0;
+            }
+
+            
+            .grid-container {
+                top:70px;
+                padding: 70px 20px;
+                margin-bottom: 20px; /* Add space between sections */
+            }
+        
+            .card {
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            /*@page {*/
+               
+                /*margin: 100mm; */
+                /* Define page margins */
+            /*}*/
+        }
+    .header, .footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 50px;
+        /*background-color: #f0f0f0;*/
+        text-align: center;
+        line-height: 50px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+     
+   /* .testimonial-container {
+        margin-top: 100px; /* Add margin to create space below the header *
+    }*/
+    header{
+        display: flex;
+        justify-content: space-between;
+        place-items: center;
+        height: 55px;
+        text-align: center;
+        padding: 0 10px;
+        
+        /*display: grid;*/
+        /*grid-template-columns: repeat(3, 1fr);*/
+        /*align-items: center;*/
+    }
+
+    h1 {
+        margin: 0;
+        padding: 0;
+        line-height: 1.1;
+        letter-spacing: 1px;
+        font-family: 'Kaushan Script';
+        font-size: 18px;
+        color: #F4511E;
+    }
+    </style>
+</head>
+<body id="body_content">
+ <div class="header">
+    <header>
+        <img src="assets/image/Indian-Bank-logo.jpg" height="45" alt="LogoDesign" style="background: #fff;">
+        <h1 class="col-span-2 text-start text-xl font-bold">
+            A TRIBUTE TO VISIONARY LEADERSHIP: HEARTFUL WISHES TO OUR MD & CEO, SHRI S L JAIN
+        </h1>
+        <img src="assets/image/Arpan logo final-01.png" height="45" alt="LogoDesign" style="background: #fff;">
+    </header>
+</div>
+<div class="testimonial-container">

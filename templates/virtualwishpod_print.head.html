@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Wish Pod</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #3b5998, #8b9dc3);
+    }
+    
+    
+    .testimonial-container {
+        padding: 50px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        position: relative;
+        padding: 20px;
+        color: #ffffff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-header {
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        border: 5px solid rgba(255, 255, 255, 0.5);
+    }
+    
+    .profile-pic {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .card-content {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .user-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+    
+    .user-role {
+        font-size: 14px;
+        color: #eeeeee;
+        margin-bottom: 10px;
+    }
+    
+    .user-message {
+        font-size: 14px;
+        font-style: italic;
+        color: #ffffff;
+    }
+    
+    @media print {
+       
+        .card {
+            box-shadow: none;
+            page-break-inside: avoid;
+        }
+    }
+
+  
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background: url(/app_playtown/virtual_wish_pod/assets/wall.jpeg);
+        }
+
+       .tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 30px 20px;
+            justify-items: center;
+            align-items: center;
+            /*background:url(/admin/selfiedownload.png);*/
+            /*background-repeat:no-repeat;*/
+        }
+
+        .photo-frame {
+            width: 150px;
+            height: 200px;
+            text-align: center;
+            position: relative;
+            background: url('https://www.playtown.co.in/app_playtown/selfie_splash/assets/img/splash1.png'); /* Replace with your background image URL */
+            background-size: cover;
+        }
+
+        .photo-frame img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Makes the image circular */
+            object-fit: cover;
+            background-size: cover;
+            margin: 25px 0 0;
+        }
+
+        .photo-frame h4 {
+            margin: 3px 0 0;
+            font-size: 16px;
+            font-family: 'Kaushan Script', cursive;
+            color: #fff;
+        }
+
+        .header, .footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 50px;
+            /*background-color: #f0f0f0;*/
+            text-align: center;
+            line-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .header {
+            top: 0;
+        }
+
+        .footer {
+            bottom: 0;
+        }
+
+        @media print {
+            /*.header, .footer {*/
+            /*    position: fixed;*/
+            /*}*/
+
+            .header {
+                top: 0;
+            }
+
+            .footer {
+                bottom: 0;
+            }
+
+            .tree {
+                page-break-inside: avoid;
+            }
+
+            .no-page-break {
+                page-break-inside: avoid;
+            }
+        }
+        #top-left-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 99;
+        }
+        #bottom-right-logo {
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+        }
+        #top-center {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 50%;
+            padding-bottom: 20px;
+            text-align: center;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .title {
+            font-family: "Kaushan Script", cursive;
+            font-size: 32px;
+            font-weight: 600;
+            color: #FFFF00;
+             text-shadow: 5px 5px black; 
+        }
+        #bottom-center {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%);
+            text-align: center;
+            /*color: black; */
+            z-index: 999999;
+            background: #00000047;
+            padding: 0 40px;
+        }
+        header{
+
+            display: flex;
+            justify-content: space-between;
+            place-items: center;
+            background-color: #fff;
+            height: 55px;
+            text-align: center;
+            padding: 0 10px;
+        
+        /*display: grid;*/
+        /*grid-template-columns: repeat(3, 1fr);*/
+        /*align-items: center;*/
+        }
+        h1 {
+            margin: 0;
+            padding: 0;
+            line-height: 1.1;
+            letter-spacing: 1px;
+            font-family: 'Kaushan Script';
+            font-size: 22px;
+            color: #F4511E;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="header">-->
+    <!--    <div id="top-left-logo">-->
+    <!--        <img width="150" src="assets/image/Indian-Bank-logo.jpg" alt="Left Logo" id="top_left_logo" >-->
+    <!--    </div>-->
